@@ -1,0 +1,4 @@
+package com.homework.edunote.controllers;
+
+public class ErrorController {
+}
