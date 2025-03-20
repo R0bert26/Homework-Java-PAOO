@@ -1,6 +1,6 @@
 package com.homework.edunote.services;
 
-import com.homework.edunote.domains.entities.StudentEntity;
+import com.homework.edunote.domain.entities.StudentEntity;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,4 +11,6 @@ public interface StudentService {
     List<StudentEntity> getAllStudents();
     StudentEntity getStudentById(UUID id);
     void deleteStudentById(UUID id);
+    StudentEntity partialUpdateStudentById(UUID id, StudentEntity student);
+    StudentEntity fullUpdateStudentById(UUID id, StudentEntity student);
 }

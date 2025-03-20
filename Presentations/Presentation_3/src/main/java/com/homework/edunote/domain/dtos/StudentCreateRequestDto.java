@@ -1,4 +1,4 @@
-package com.homework.edunote.domains.dtos;
+package com.homework.edunote.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;

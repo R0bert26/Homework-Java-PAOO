@@ -1,5 +1,6 @@
-package com.homework.edunote.domains.dtos;
+package com.homework.edunote.domain.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +15,15 @@ import java.util.UUID;
 @Builder
 public class StudentResponseDto {
 
+    @JsonProperty("id")
     private UUID id;
-    private String firstName;
-    private String lastName;
-    private LocalDateTime createdAt;
 
+    @JsonProperty("first_name")
+    private String firstName;
+
+    @JsonProperty("last_name")
+    private String lastName;
+
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
 }

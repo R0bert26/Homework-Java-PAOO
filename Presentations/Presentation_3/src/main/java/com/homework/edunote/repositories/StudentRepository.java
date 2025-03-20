@@ -1,6 +1,6 @@
 package com.homework.edunote.repositories;
 
-import com.homework.edunote.domains.entities.StudentEntity;
+import com.homework.edunote.domain.entities.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

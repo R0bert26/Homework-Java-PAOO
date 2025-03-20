@@ -1,14 +1,16 @@
 package com.homework.edunote.controllers;
 
-import com.homework.edunote.domains.dtos.StudentCreateRequestDto;
-import com.homework.edunote.domains.dtos.StudentResponseDto;
-import com.homework.edunote.domains.entities.StudentEntity;
+import com.homework.edunote.domain.dtos.StudentCreateRequestDto;
+import com.homework.edunote.domain.dtos.StudentResponseDto;
+import com.homework.edunote.domain.dtos.StudentUpdateRequestDto;
+import com.homework.edunote.domain.entities.StudentEntity;
+import com.homework.edunote.domain.validation.ValidationGroups;
 import com.homework.edunote.mappers.StudentMapper;
 import com.homework.edunote.services.StudentService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +26,7 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<StudentResponseDto> createStudent(
-            @Valid @RequestBody StudentCreateRequestDto studentCreateRequestDto) {
+            @Validated @RequestBody StudentCreateRequestDto studentCreateRequestDto) {
         StudentEntity studentToCreate = studentMapper.mapFromStudentCreateRequestDtoToStudentEntity(studentCreateRequestDto);
         StudentEntity savedStudent = studentService.createStudent(studentToCreate);
         StudentResponseDto savedStudentDto = studentMapper.mapFromStudentEntityToStudentResponseDto(savedStudent);
@@ -55,5 +57,29 @@ public class StudentController {
         studentService.deleteStudentById(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<StudentResponseDto> partialUpdateStudentById(
+            @PathVariable UUID id,
+            @Validated(ValidationGroups.OnPatchStudent.class) @RequestBody StudentUpdateRequestDto studentUpdateRequestDto) {
+
+        StudentEntity student = studentMapper.mapFromStudentUpdateRequestDtoToStudentEntity(studentUpdateRequestDto);
+        StudentEntity updatedStudent = studentService.partialUpdateStudentById(id, student);
+        StudentResponseDto updatedStudentDto = studentMapper.mapFromStudentEntityToStudentResponseDto(updatedStudent);
+
+        return ResponseEntity.ok(updatedStudentDto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentResponseDto> fullUpdateStudentById(
+            @PathVariable UUID id,
+            @Validated(ValidationGroups.OnPutStudent.class) @RequestBody StudentUpdateRequestDto studentUpdateRequestDto) {
+
+        StudentEntity student = studentMapper.mapFromStudentUpdateRequestDtoToStudentEntity(studentUpdateRequestDto);
+        StudentEntity updatedStudent = studentService.fullUpdateStudentById(id, student);
+        StudentResponseDto updatedStudentDto = studentMapper.mapFromStudentEntityToStudentResponseDto(updatedStudent);
+
+        return ResponseEntity.ok(updatedStudentDto);
     }
 }

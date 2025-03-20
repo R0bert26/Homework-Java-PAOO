@@ -1,25 +1,13 @@
 package com.homework.edunote.mappers;
 
-import com.homework.edunote.domains.dtos.StudentCreateRequestDto;
-import com.homework.edunote.domains.dtos.StudentResponseDto;
-import com.homework.edunote.domains.entities.StudentEntity;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
+import com.homework.edunote.domain.dtos.StudentCreateRequestDto;
+import com.homework.edunote.domain.dtos.StudentResponseDto;
+import com.homework.edunote.domain.dtos.StudentUpdateRequestDto;
+import com.homework.edunote.domain.entities.StudentEntity;
 
-@Component
-@RequiredArgsConstructor
-public class StudentMapper {
+public interface StudentMapper {
 
-    private final ModelMapper modelMapper;
-
-    public StudentEntity mapFromStudentCreateRequestDtoToStudentEntity(
-            StudentCreateRequestDto studentCreateRequestDto) {
-        return modelMapper.map(studentCreateRequestDto, StudentEntity.class);
-    }
-
-    public StudentResponseDto mapFromStudentEntityToStudentResponseDto(
-            StudentEntity studentEntity) {
-        return modelMapper.map(studentEntity, StudentResponseDto.class);
-    }
+    StudentEntity mapFromStudentCreateRequestDtoToStudentEntity(StudentCreateRequestDto studentCreateRequestDto);
+    StudentResponseDto mapFromStudentEntityToStudentResponseDto(StudentEntity studentEntity);
+    StudentEntity mapFromStudentUpdateRequestDtoToStudentEntity(StudentUpdateRequestDto studentUpdateRequestDto);
 }
