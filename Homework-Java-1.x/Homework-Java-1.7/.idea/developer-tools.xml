@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="cli-command-converter">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="uuid-generator" id="656da42d-ebaf-46c1-a3ae-290cbf42272b" name="Workbench">
+        <properties>
+          <property key="version" type="CONFIGURATION" value="dev.turingcomplete.intellijdevelopertoolsplugin._internal.tool.ui.generator.uuid.UuidVersion|V6" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="lorem-ipsum-generator" id="d74e11d4-c492-4331-9c4d-6fab59b359eb" name="Workbench">
+        <properties>
+          <property key="generatedTextKind" type="CONFIGURATION" value="dev.turingcomplete.intellijdevelopertoolsplugin._internal.tool.ui.generator.LoremIpsumGenerator$TextMode|WORDS" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
+  </component>
+</project>
